@@ -1,7 +1,7 @@
 {
   "name": "DuelingNexus Start-Hand Simulator",
   "description": "Adds a \"Test-Hand\" Button to your decks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "manifest_version": 3,
   "action": {
     "default_icon": {
@@ -21,7 +21,7 @@
     {
         "js" : ["vendor/sweetalert2/sweetalert2.min.js","init.js"],
         "css": ["vendor/sweetalert2/sweetalert2.min.css"],
-        "matches" : ["*://duelingnexus.com/editor/*"]
+        "matches" : ["*://duelingnexus.com/editor/*","*://ptr.duelingnexus.com/editor/*"]
     }
   ]
 }

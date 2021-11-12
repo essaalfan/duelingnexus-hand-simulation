@@ -3,7 +3,8 @@
     var btn = document.createElement("button");
     btn.innerText = "Test-Hand";
     btn.id = "editor-starthand-button";
-    btn.classList = "engine-button engine-button-navbar engine-button-default";
+    btn.classList = "engine-button engine-button-navbar engine-button-default editor-button-navbar";
+	btn.style.width = "auto";
     document.querySelector("#editor-menu-content").appendChild(btn);
   }
 
