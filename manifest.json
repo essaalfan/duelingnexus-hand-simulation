@@ -1,7 +1,7 @@
 {
   "name": "DuelingNexus Start-Hand Simulator",
   "description": "Adds a \"Test-Hand\" Button to your decks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "manifest_version": 3,
   "action": {
     "default_icon": {

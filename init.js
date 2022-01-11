@@ -17,7 +17,9 @@
   }
 
   function fnTestHand(input = 'first') {    
-    const hand = fnDraw(input === 'second'? 6 : 5);
+    let deck = fnDraw(); //entire deck shuffled.
+    const hand = deck.splice(0,input === 'second'? 6 : 5); //draw starting hand and remove it from main deck
+    
     if(!hand.length){
       Sweetalert2.fire({
         title: "Whops!",
@@ -27,9 +29,9 @@
       });
     } else {
       let html = "";      
-      let handHtml = "<div style='display: flex; align-items: flex-start; justify-content: space-between;'>";
+      let handHtml = "<div id='duelingnexus-hand-simulation-container' style='display: flex; align-items: flex-start; flex-wrap: wrap; justify-content: center;'>";
       hand.forEach(item => {
-        handHtml+=`<img width="100px" src="${item}">`;
+        handHtml+=`<img width="100px" src="${item}" style="margin:2px">`;
       });
       handHtml+="</div>";
       html+=handHtml;
@@ -53,20 +55,28 @@
         allowEnterKey: false,
         buttonsStyling: false,
         customClass: {
-          confirmButton: 'engine-button engine-button-navbar engine-button-primary'
+          confirmButton: 'engine-button engine-button-navbar engine-button-primary',
+          denyButton: 'engine-button engine-button-navbar engine-button-primary'
         },
         confirmButtonText:'Draw',
         confirmButtonAriaLabel: 'Draw',
+        denyButtonText: '+1',
+        denyButtonAriaLabel: '+1',
         showClass: {
           backdrop: 'swal2-noanimation', // disable backdrop animation
           popup: '',                     // disable popup animation
           icon: ''                       // disable icon animation
         },
+        showDenyButton: true,
         // hideClass: {
         //   popup: '',                     // disable popup fade-out animation
         // },
-        preConfirm: (result)=>{
+        preConfirm: (result)=>{ //'Draw' button is clicked
           fnTestHand(result);
+          return false;
+        },
+        preDeny: ()=>{ //'+1' button is clicked
+          fnAppendCards(deck.splice(0,1));
           return false;
         }
       });
@@ -74,7 +84,17 @@
     
   }
 
-  function fnDraw(n = 5) {    
+  function fnAppendCards(cards){
+    if(!cards || !cards.length){
+      return;
+    }
+    let elem = document.querySelector("#duelingnexus-hand-simulation-container");
+    cards.forEach(card => {
+      elem.innerHTML+=`<img width="100px" src="${card}" style="margin:2px">`;
+    });
+  }
+
+  function fnDraw() {    
     const mainDeck = document.querySelectorAll("#editor-main-deck img");
 
     let deck = []; //image urls
@@ -82,7 +102,7 @@
     [...mainDeck].forEach(card=>deck.push(card.getAttribute('src')));
     const shuffled = fnShuffle(deck);
 
-    return shuffled.slice(0, n);
+    return shuffled.slice(0, shuffled.length);
   }
 
   function fnShuffle(array) {
