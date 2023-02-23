@@ -99,7 +99,7 @@
 
     let deck = []; //image urls
     
-    [...mainDeck].forEach(card=>deck.push(card.getAttribute('src')));
+    [...mainDeck].forEach(card=>deck.push(card.style.backgroundImage.split('"')[1]));
     const shuffled = fnShuffle(deck);
 
     return shuffled.slice(0, shuffled.length);
