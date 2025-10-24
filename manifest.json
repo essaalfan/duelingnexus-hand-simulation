@@ -1,15 +1,10 @@
 {
   "name": "DuelingNexus Tools – Start-Hand Simulator & Replay Deck Downloader",
-  "description": "Enhances DuelingNexus with a Start-Hand simulator and replay deck downloader that lets you download your or your opponent's deck in YDK format",
+  "description": "Enhances DuelingNexus with a Start-Hand simulator and replay deck downloader",
   "version": "1.0.5",
   "manifest_version": 3,
-  "permissions": [
-    "activeTab",
-    "scripting"
-  ],
   "host_permissions": [
-    "*://duelingnexus.com/*",
-    "*://ptr.duelingnexus.com/*"
+    "*://duelingnexus.com/*"
   ],
   "action": {
     "default_icon": {
@@ -29,13 +24,13 @@
     {
         "js" : ["vendor/sweetalert2/sweetalert2.min.js","init.js"],
         "css": ["vendor/sweetalert2/sweetalert2.min.css"],
-        "matches" : ["*://duelingnexus.com/editor/*","*://ptr.duelingnexus.com/editor/*"],
+        "matches" : ["*://duelingnexus.com/editor/*"],
         "run_at": "document_end"
     },
     {
         "js" : ["vendor/sweetalert2/sweetalert2.min.js","replay.js"],
         "css": ["vendor/sweetalert2/sweetalert2.min.css"],
-        "matches" : ["*://duelingnexus.com/replay/*","*://ptr.duelingnexus.com/replay/*"],
+        "matches" : ["*://duelingnexus.com/replay/*"],
         "run_at": "document_end",
         "world": "MAIN",
         "all_frames": true
