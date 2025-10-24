@@ -1,11 +1,17 @@
-# DuelingNexus Start-Hand Simulator (Chrome Extension)
+# DuelingNexus Tools – Start-Hand Simulator & Replay Deck Downloader (Chrome Extension)
 
 Chrome extension designed for [DuelingNexus](https://duelingnexus.com).
 
 ## Description
 
-- Adds a "Test-Hand" button to your decks with "Going First" and "Going Second" Options
-- Ability to draw card by card
+Enhances the DuelingNexus experience with two major tools:
+- 🎴 Start-Hand Simulator — Adds a “Test-Hand” button to your decks with “Going First” and “Going Second” options.
+    - Simulate opening hands directly from your deck editor
+    - Draw card by card to test consistency
+
+- 📥 Replay Deck Downloader — Adds download buttons on replay pages.
+    - Download your or your opponent’s deck in standard .ydk format
+    - Deck files include real player names
 
 ## Getting Started
 
@@ -26,6 +32,15 @@ Chrome extension designed for [DuelingNexus](https://duelingnexus.com).
 [@EssaAlfan](https://github.com/essaalfan)
 
 ## Version History
+* 1.0.5
+    * ✨ Added Replay Deck Downloader feature
+    * Supports downloading your or opponent’s deck from replay pages
+    * Uses real player names in filenames
+    * Proper .ydk format with headers and sorted cards
+    * Manifest updated for replay page support and permissions
+    * Robust error handling and cross-domain support
+* 1.0.4
+    * Fixed updated DOM structure for card images after DuelingNexus site changes
 * 1.0.3
     * Added the ability to draw card by card
     * See [commit change](https://github.com/essaalfan/duelingnexus-hand-simulation/commit/d0d93f1af58b438f1eac6db51720bb2de2807cd6)
