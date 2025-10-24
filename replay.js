@@ -178,34 +178,48 @@
   function addDownloadButtons() {
     console.log('Starting to add download buttons...');
     console.log('Game object available at init:', typeof Game);
-    
+
     try {
-      // Get player names from Game.replayMessages instead of DOM
-      let player1Name = 'Player 1';
-      let player2Name = 'Player 2';
-      
+      let leftPlayerName = 'Player 1';
+      let rightPlayerName = 'Player 2';
+
       if (typeof Game !== 'undefined' && Game.replayMessages && Game.replayMessages.length >= 4) {
-        player1Name = Game.replayMessages[2].name;  // PROZ_ESSA
-        player2Name = Game.replayMessages[3].name;  // Grigro
-        console.log('Using player names from replayMessages:', player1Name, player2Name);
+        const nameA = Game.replayMessages[2].name;
+        const nameB = Game.replayMessages[3].name;
+        const currentUser = Game.username || null;
+
+        console.log('Detected names from replayMessages:', nameA, nameB);
+        console.log('Detected Game.username:', currentUser);
+
+        // If Game.username matches nameA or nameB, assign correctly
+        if (currentUser && (currentUser === nameA || currentUser === nameB)) {
+          leftPlayerName = currentUser;
+          rightPlayerName = currentUser === nameA ? nameB : nameA;
+        } else {
+          // Fallback: assume original order
+          leftPlayerName = nameA;
+          rightPlayerName = nameB;
+        }
+
+        console.log('Final player mapping → Left:', leftPlayerName, '| Right:', rightPlayerName);
       } else {
         console.log('Game.replayMessages not available, using fallback names');
       }
-      
+
       // Find player avatar areas
       const leftPlayerArea = document.querySelector('.game-avatar-area.game-avatar-left');
       const rightPlayerArea = document.querySelector('.game-avatar-area.game-avatar-right');
-      
+
       if (leftPlayerArea) {
-        const button1 = createDownloadButton(player1Name);
+        const button1 = createDownloadButton(leftPlayerName);
         leftPlayerArea.appendChild(button1);
-        console.log('Added button for player 1:', player1Name);
+        console.log('Added button for left player:', leftPlayerName);
       }
-      
+
       if (rightPlayerArea) {
-        const button2 = createDownloadButton(player2Name);
+        const button2 = createDownloadButton(rightPlayerName);
         rightPlayerArea.appendChild(button2);
-        console.log('Added button for player 2:', player2Name);
+        console.log('Added button for right player:', rightPlayerName);
       }
 
       console.log('Download buttons added successfully');
@@ -213,6 +227,7 @@
       console.error('Error adding download buttons:', error);
     }
   }
+
 
   // Initialize when DOM is ready
   if (document.readyState === 'loading') {
