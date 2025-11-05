@@ -32,6 +32,8 @@ Enhances the DuelingNexus experience with two major tools:
 [@EssaAlfan](https://github.com/essaalfan)
 
 ## Version History
+* 1.0.6
+    * 🛠️ Replay Deck Downloader bug fix - invalid deck due to older card code
 * 1.0.5
     * ✨ Added Replay Deck Downloader feature
     * Supports downloading your or opponent’s deck from replay pages

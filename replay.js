@@ -70,8 +70,8 @@
             
             if (mainDeckData && mainDeckData.cards) {
               console.log(`Main deck data for player ${playerIndex}:`, mainDeckData);
-              mainDeck = mainDeckData.cards.map(card => card.code).filter(code => code);
-              // Sort main deck codes numerically for better organization
+              mainDeck = mainDeckData.cards.map(card => card.alias).filter(alias => alias);
+              // Sort main deck aliases numerically for better organization
               mainDeck.sort((a, b) => parseInt(a) - parseInt(b));
             } else {
               console.log('Main deck data not found or invalid');
@@ -85,8 +85,8 @@
             
             if (extraDeckData && extraDeckData.cards) {
               console.log(`Extra deck data for player ${playerIndex}:`, extraDeckData);
-              extraDeck = extraDeckData.cards.map(card => card.code).filter(code => code);
-              // Sort extra deck codes numerically for better organization
+              extraDeck = extraDeckData.cards.map(card => card.alias).filter(alias => alias);
+              // Sort extra deck aliases numerically for better organization
               extraDeck.sort((a, b) => parseInt(a) - parseInt(b));
             } else {
               console.log('Extra deck data not found or invalid');

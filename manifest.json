@@ -1,7 +1,7 @@
 {
   "name": "DuelingNexus Tools – Start-Hand Simulator & Replay Deck Downloader",
   "description": "Enhances DuelingNexus with a Start-Hand simulator and replay deck downloader",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "manifest_version": 3,
   "host_permissions": [
     "*://duelingnexus.com/*"
